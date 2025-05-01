@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shayam & Pravalika - Engagement Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #1b1b1b;
+      color: #f0e7e9;
+    }
+
+    h1, h2 {
+      font-family: 'Great Vibes', cursive;
+      color: #d2a679;
+      font-weight: 400;
+    }
+
+    p {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Countdown Bar */
+    #countdown {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #2e2e2e;
+      color: #f0e7e9;
+      text-align: center;
+      padding: 0.7rem;
+      font-size: 1rem;
+      z-index: 1000;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* Floating Hearts */
+    .love-heart {
+      position: fixed;
+      bottom: 0;
+      font-size: 24px;
+      color: #ff6699;
+      animation: floatUp 4s linear forwards;
+      opacity: 0.9;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.9; }
+      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(34, 34, 34, 0.95);
+      padding: 0.7rem 1.2rem;
+      width: calc(100% - 2rem);
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      flex-wrap: wrap;
+    }
+
+      
+      
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #f0e7e9;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #d2a679;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      color: #f0e7e9;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        margin-top: 0.5rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        align-self: flex-end;
+      }
+    }
+
+    section {
+      padding: 8rem 1.5rem 4rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    
+
+    a {
+      color: #d2a679;
+    }
+
+    a.button {
+      background: #d2a679;
+      color: #1b1b1b;
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    a.button:hover {
+      background: #b68c5f;
+    }
+
+    .story-image {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      margin-top: 2rem;
+    }
+
+    /* Hero Image */
+    #home {
+     text-align: center; 
+     margin-left: 30px;
+    }
+
+    /* Sections */
+    #story, #ceremony, #gallery, #directions, #rsvp {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      margin: 2rem 0;
+      max-width: 900px;
+      width: 100%;
+    }
+  
+
+  </style>
+</head>
+<body>
+
+  <!-- Countdown -->
+  <div id="countdown">💕 Countdown loading...</div>
+
+  <!-- Navbar -->
+  <nav>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      
+      <span class="right-icon">☰</span>
+    </button>
+    
+    <div class="nav-links" id="navLinks">
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#story" onclick="closeMenu()">Our Story</a>
+      <a href="#ceremony" onclick="closeMenu()">Ceremony</a>
+      <a href="#directions" onclick="closeMenu()">Directions</a>
+    
+      <a href="#rsvp" onclick="closeMenu()">RSVP</a>
+    </div>
+  </nav>
+
+  <!-- Sections -->
+  <section id="home">
+    <h1 style="font-size: 55px; ">Shyam Sunder<br> and <br>Pravalika</h1>
+    <p style="font-size: 1.2rem;">We're getting engaged 💍</p>
+    <p style="font-size: 15px; max-width: 600px;">Join us in celebrating our journey of love as we take the next step toward forever.</p>
+  </section>
+
+  <section id="story">
+    <h2 style="font-size: xxx-large;">Our Story</h2>
+    <p style="max-width: 500px;">
+      What began as an unexpected connection soon blossomed into something truly special. Neither of us imagined that a relationship arranged by our parents would turn into a bond so deep and meaningful.
+      <br>
+      <br>
+      At first, it felt like a plan written by others a quiet introduction, a few curious glances, and conversations that started formally. But slowly, something shifted. With every call, every smile, and every shared thought, we began to see a future we hadn’t planned but one we now couldn’t imagine living without.
+      <br>
+
+      <br>
+      
+      It was destiny wrapped in tradition, love born out of understanding, and comfort found in the most unexpected place each other. Our hearts grew closer with every passing moment, and what was once arranged became something chosen… wholeheartedly, endlessly.
+      <br>
+
+      <br>
+      
+      Today, we celebrate not just our engagement, but the beautiful surprise that brought us together a love story written by fate and sealed by choice.
+      </p>
+  </section>
+
+  <section id="ceremony">
+    <h2 style="font-size: xxx-large;">Engagement Ceremony</h2>
+    <p><strong>Date:</strong> 03-05-2025<br> <br><strong>Time:</strong> 11:00 AM<br> <br><strong>Venue:</strong> Sharanya Gardens, Peddammagadda, Hanamkonda, Warangal</p>
+    <p style="font-size: x-large;"><a href="https://maps.app.goo.gl/PRFpkFKV4DGYjRxs7" target="_blank">📍 View Location on Google Maps</a></p>
+  </section>
+
+  <section id="directions">
+    <h2 style="font-size: xxx-large;">Directions</h2>
+    <p style="font-size: xx-large;">The venue is easily reachable and offers ample parking. Click below for GPS directions.</p>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=2H4R+674&travelmode=driving" 
+   class="button directions-button" target="_blank">
+   🚗 Get Directions
+</a>
+
+  </section>
+
+  <section id="rsvp">
+    <h2 style="font-size: xxx-large;">RSVP</h2>
+    <p>Will you be joining us? Let us know via WhatsApp!</p>
+    <br>
+    <a class="button" href="https://wa.me/919010914056?text=Hi%20Shayam%20and%20Pravalika!%20I%20would%20love%20to%20attend%20your%20engagement%20on%2003-05-2025." target="_blank">Send RSVP</a>
+  </section>
+ 
+  <footer >
+    <p style="text-align: center; margin-left: 10px;">Copyright © 2025 — All rights reserved by<br> <strong>Shyam Sunder & Pravalika</strong></p>
+    <p style="text-align: center;">
+      Side effects may include excessive smiling and a sudden urge to thank the Bride's Brother. <br />
+      Developed with tons of love 🧿.
+    </p>
+  </footer>
+  
+
+  <!-- JavaScript -->
+  <script>
+    // Celebration Confetti on Load
+    window.onload = function () {
+      celebrate();
+      updateCountdown();
+    };
+
+    function celebrate() {
+      const duration = 2 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 10, spread: 360, ticks: 70, zIndex: 1000 };
+
+      const interval = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
+
+        confetti(Object.assign({}, defaults, {
+          particleCount: 50 * (timeLeft / duration),
+          origin: { x: Math.random(), y: Math.random() - 0.2 }
+        }));
+      }, 250);
+    }
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("love-heart");
+
+      const symbols = ["🩷", "💖", "💕", "💘","💞","💝"];
+      heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+    setInterval(createHeart, 300);
+
+    // Countdown Timer
+    const countdownEl = document.getElementById("countdown");
+    const engagementDate = new Date("2025-05-03T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = engagementDate - now;
+
+      if (distance < 0) {
+        countdownEl.innerHTML = "💍 It's the big day!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `💕 Countdown to Love: ${days}d ${hours}h ${minutes}m ${seconds}s 💕`;
+    }
+
+    setInterval(updateCountdown, 1000);
+
+    // Navbar toggle
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("open");
+    }
+
+    function closeMenu() {
+      if (window.innerWidth <= 768) {
+        document.getElementById("navLinks").classList.remove("open");
+      }
+    }
+  </script>
+</body>
+</html>
